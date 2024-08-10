@@ -93,3 +93,4 @@ yarn.lock
 # IDE specific
 .vscode/
 .idea/
+venv/
