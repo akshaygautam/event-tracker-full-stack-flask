@@ -1,0 +1,3 @@
+- Start the whole app with npm run start:full 
+- Backend will hot reload on change
+- Need to do npm run build for when changes to fronend are made
