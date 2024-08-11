@@ -11,7 +11,7 @@ def create_app():
     db.init_app(app)
 
     with app.app_context():
-        from app.models import Event  # Import the Event model to create tables
+        from app.models import Event, Student  # Import the Event model to create tables
         db.create_all()
         init_routes(app)  # Initialize routes
         init_error_handlers(app)  # Initialize error handlers
