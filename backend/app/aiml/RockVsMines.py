@@ -4,9 +4,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
+csvPath = 'd:/code/event-tracker-full-stack-flask/backend/app/resources/RockVsMines.csv'
 # Load and prepare data
 def load_and_train_model():
-    sonar_data = pd.read_csv('../resources/RockVsMines.csv', header=None)
+    print("Loading and training datamodel")
+    sonar_data = pd.read_csv(csvPath, header=None)
     X = sonar_data.drop(columns=60, axis=1)
     Y = sonar_data[60]
     
@@ -38,3 +40,26 @@ def predict_object(model, input_data):
         return 'The object is a Rock'
     else:
         return 'The object is a Mine'
+
+def generate_frequency_map(model):
+    # Load the CSV data to get feature statistics
+    sonar_data = pd.read_csv(csvPath, header=None)
+    feature_data = sonar_data.iloc[:, :-1]
+
+    # Get min and max values for each feature
+    min_values = feature_data.min()
+    max_values = feature_data.max()
+    
+    frequency_map = {}
+
+    for i in range(1, 101):  # Example range of frequencies
+        # Generate synthetic data within the range of the real data
+        input_data = np.random.uniform(min_values, max_values, size=feature_data.shape[1])
+        
+        # Call the predict_object function with the input_data
+        prediction = predict_object(model, input_data)
+        
+        # Map the frequency (or whatever key you are using) to the prediction
+        frequency_map[i] = prediction
+    
+    return frequency_map
