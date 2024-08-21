@@ -15,7 +15,7 @@ const Matrix = () => {
   }, []);
 
   // Determine the matrix size based on frequencyMap
-  const size = Math.sqrt(Object.keys(frequencyMap).length); // Assuming a square matrix
+  const size = Math.floor(Math.sqrt(Object.keys(frequencyMap).length)); // Assuming a square matrix
 
   const handleClick = (key) => {
     // Prevent re-clicking on already revealed boxes

@@ -52,7 +52,7 @@ def generate_frequency_map(model):
     
     frequency_map = {}
 
-    for i in range(1, 101):  # Example range of frequencies
+    for i in range(0, 101):  # Example range of frequencies
         # Generate synthetic data within the range of the real data
         input_data = np.random.uniform(min_values, max_values, size=feature_data.shape[1])
         
